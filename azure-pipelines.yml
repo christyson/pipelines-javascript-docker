@@ -30,3 +30,5 @@ stages:
     - script: |
         curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(tag)
       displayName: 'Download Veracode Pipeline Scanner'
+      env:
+        SRCCLR_API_TOKEN: $(SRCCLR_API_TOKEN)
