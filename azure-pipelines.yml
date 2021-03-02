@@ -27,6 +27,6 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
         tags: |
           $(tag)
-        script: |
-          curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(tag)
-        displayName: 'Download Veracode Pipeline Scanner'
+    - script: |
+        curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(tag)
+      displayName: 'Download Veracode Pipeline Scanner'
