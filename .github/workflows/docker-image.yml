@@ -18,3 +18,16 @@ jobs:
       run: |
        ls -alg
        docker build . --file app/Dockerfile2 --tag my-image-name:$(date +%s)
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+         python-version: 3.6
+    - name: Install pipenv
+      run: |
+        pip install pipenv
+        pipenv install -r requirements.txt
+    - name: Run Veracode SCA
+      env:
+        SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
+      run: |
+        curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(my-image-name)
