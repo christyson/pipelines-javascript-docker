@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: |
        ls -alg
-       docker build . --file app/Dockerfile --tag my-image-name:$(date +%s)
+       docker build . --file app/Dockerfile2 --tag my-image-name:$(date +%s)
