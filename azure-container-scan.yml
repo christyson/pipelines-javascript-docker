@@ -40,6 +40,7 @@ stages:
       env:
         VERACODE_ID: $(VERACODE_ID)
         VERACODE_KEY: $(VERACODE_KEY)
-    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_table.txt, $(System.DefaultWorkingDirectory)/$(imageName)_json.json, $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
+    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_table.txt
       artifact: Container_results
       displayName: 'Publish the output files'
+# , $(System.DefaultWorkingDirectory)/$(imageName)_json.json, $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
