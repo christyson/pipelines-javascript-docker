@@ -29,6 +29,8 @@ stages:
         tags: |
           $(tag)
           latest
+# https://docs.veracode.com/r/veracode_sbom#target-type shows the different types of targets you can scan (i.e. image, repo, directory etc.)
+# https://docs.veracode.com/r/veracode_sbom#flags shows the different formats you can use for container scanning
     - script: |
         curl -fsS https://tools.veracode.com/veracode-cli/install | sh
         export VERACODE_API_KEY_ID=$(VERACODE_ID)
