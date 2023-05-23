@@ -1,7 +1,7 @@
 # Build a Docker image and scan it for issues using Veracode's SCA
 
 trigger:
-- master
+- none
 
 resources:
 - repo: self
