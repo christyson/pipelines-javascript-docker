@@ -30,7 +30,9 @@ stages:
           $(tag)
           latest
     - script: |
-        curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(imageName)
+        curl -fsS https://tools.veracode.com/veracode-cli/install | sh
+        ./veracode scan --type image $(imageName)
       displayName: 'Download Veracode SCA agent and scan image'
       env:
-        SRCCLR_API_TOKEN: $(SRCCLR_API_TOKEN)
+        VERACODE_ID: $(VERACODE_ID)
+        VERACODE_KEY: $(VERACODE_KEY)
