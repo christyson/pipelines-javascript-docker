@@ -35,6 +35,7 @@ stages:
         export VERACODE_API_KEY_SECRET=$(VERACODE_KEY)
         ./veracode scan --type image --source $(imageName) --format table --output $(imageName)_table.txt
         ./veracode scan --type image --source $(imageName) --format json --output $(imageName)_json.json
+        ./veracode scan --type image --source $(imageName) --format cyclonedx --output $(imageName)_cyclonedx.xml
       displayName: 'Download Veracode Container scan and scan image'
       env:
         VERACODE_ID: $(VERACODE_ID)
