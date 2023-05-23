@@ -1,0 +1,36 @@
+# Build a Docker image and scan it for issues using Veracode's SCA
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  imageName: 'verademo.net'
+  DOCKER_BUILDKIT: 1
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: 'Build and scan the docker image for verademo.net'
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(imageName)
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
+        tags: |
+          $(tag)
+          latest
+    - script: |
+        curl -sSL https://download.sourceclear.com/ci.sh | bash -s scan --image $(imageName)
+      displayName: 'Download Veracode SCA agent and scan image'
+      env:
+        SRCCLR_API_TOKEN: $(SRCCLR_API_TOKEN)
