@@ -31,7 +31,7 @@ stages:
           latest
     - script: |
         curl -fsS https://tools.veracode.com/veracode-cli/install | sh
-        ./veracode scan --type image $(imageName)
+        ./veracode scan --type image --source $(imageName)
       displayName: 'Download Veracode SCA agent and scan image'
       env:
         VERACODE_ID: $(VERACODE_ID)
