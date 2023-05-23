@@ -1,4 +1,4 @@
-# Build a Docker image and scan it for issues using Veracode's SCA
+# Build a Docker image and scan it for issues using Veracode's Container Scan
 
 trigger:
 - none
