@@ -33,7 +33,8 @@ stages:
         curl -fsS https://tools.veracode.com/veracode-cli/install | sh
         export VERACODE_API_KEY_ID=$(VERACODE_ID)
         export VERACODE_API_KEY_SECRET=$(VERACODE_KEY)
-        ./veracode scan --type image --source $(imageName)
+        ./veracode scan --type image --source $(imageName) --format table --output $(imageName)_table.txt
+        ./veracode scan --type image --source $(imageName) --format json --output $(imageName)_json.json
       displayName: 'Download Veracode Container scan and scan image'
       env:
         VERACODE_ID: $(VERACODE_ID)
