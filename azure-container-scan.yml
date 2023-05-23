@@ -42,5 +42,10 @@ stages:
         VERACODE_KEY: $(VERACODE_KEY)
     - publish: $(System.DefaultWorkingDirectory)/$(imageName)_table.txt
       artifact: Container_results
-      displayName: 'Publish the output files'
-# , $(System.DefaultWorkingDirectory)/$(imageName)_json.json, $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
+      displayName: 'Publish the table output'
+    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_json.json
+      artifact: Container_results
+      displayName: 'Publish the json output file'
+    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
+      artifact: Container_results
+      displayName: 'Publish the cyclonedx output file'
