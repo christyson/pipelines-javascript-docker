@@ -38,6 +38,7 @@ stages:
         ./veracode scan --type image --source $(imageName) --format table --output $(imageName)_table.txt
         ./veracode scan --type image --source $(imageName) --format json --output $(imageName)_json.json
         ./veracode scan --type image --source $(imageName) --format cyclonedx --output $(imageName)_cyclonedx.xml
+        echo done sboms
       displayName: 'Download Veracode Container scan and scan image'
       continueOnError: true
       env:
