@@ -38,6 +38,7 @@ stages:
         ./veracode scan --type image --source $(imageName) --format table --output $(imageName)_table.txt
         ./veracode scan --type image --source $(imageName) --format json --output $(imageName)_json.json
         ./veracode scan --type image --source $(imageName) --format cyclonedx --output $(imageName)_cyclonedx.xml
+        ./veracode scan --type directory --source '$(Build.SourcesDirectory)/app' --format table --output $(imageName)_dir.txt
         echo done sboms
       displayName: 'Download Veracode Container scan and scan image'
       continueOnError: true
@@ -49,7 +50,7 @@ stages:
       displayName: 'Publish the table output'
     - publish: $(System.DefaultWorkingDirectory)/$(imageName)_json.json
       artifact: Container_results_json
-      displayName: 'Publish the json output file'
-    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
-      artifact: Container_results_cyclonedx
+      displayName: 'Publish the directory scan output file'
+    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_dir.txt
+      artifact: Container_results_dir_txt
       displayName: 'Publish the cyclonedx output file'
