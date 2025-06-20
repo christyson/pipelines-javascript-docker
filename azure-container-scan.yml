@@ -50,7 +50,10 @@ stages:
       displayName: 'Publish the table output'
     - publish: $(System.DefaultWorkingDirectory)/$(imageName)_json.json
       artifact: Container_results_json
-      displayName: 'Publish the directory scan output file'
+      displayName: 'Publish the spdx output file'
+    - publish: $(System.DefaultWorkingDirectory)/$(imageName)_cyclonedx.xml
+      artifact: Container_results_cyclonedx
+      displayName: 'Publish the cyclonedx output file'
     - publish: $(System.DefaultWorkingDirectory)/$(imageName)_dir.txt
       artifact: Container_results_dir_txt
       displayName: 'Publish the cyclonedx output file'
