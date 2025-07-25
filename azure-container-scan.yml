@@ -56,4 +56,4 @@ stages:
       displayName: 'Publish the cyclonedx output file'
     - publish: $(System.DefaultWorkingDirectory)/$(imageName)_dir.txt
       artifact: Container_results_dir_txt
-      displayName: 'Publish the cyclonedx output file'
+      displayName: 'Publish the Text output file'
